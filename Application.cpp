@@ -78,7 +78,7 @@ void Application::update(float dt)
 void Application::loadResources()
 {
     gData -> mAssets.loadTexture(Textures::TitleScreen, "media/images/background.png");
-    gData -> mAssets.loadTexture(Textures::Tiles, "media/images/kenney_sokobanPack/Tilesheet/sokoban_tilesheet.png");
+    gData -> mAssets.loadTexture(Textures::Tiles, "media/images/sokoban_tilesheet.png");
     gData -> mAssets.loadTexture(Textures::PlayButton, "media/images/Button.png");
 	gData -> mAssets.loadTexture(Textures::ExitButton, "media/images/Button.png");
 	gData -> mAssets.loadTexture(Textures::SmallMenu, "media/images/small_menu.png");
