@@ -17,5 +17,5 @@ Outsourced resources:
 
 
 ##### Screenshots:
-![alt text](https://github.com/filasfilas/Puzzle-15/blob/master/images/screenshot.png?raw=true)
+![alt text](https://github.com/filasfilas/F-Pusher/blob/main/media/images/F-Pusher-1.png?raw=true)
 
