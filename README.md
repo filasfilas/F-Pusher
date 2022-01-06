@@ -11,9 +11,9 @@ Outsourced resources:
 	Use arrows to move a hero.
 
 ##### To do:
-	- Add animation
-  - add Sounds
-  - add Music (need nice ogg file only. Source code is already done.)
+	Add animation
+	add Sounds
+	add Music (need nice ogg file only. Source code is already done.)
 
 
 ##### Screenshots:
