@@ -209,4 +209,8 @@ void LevelManager::chekBoxesOnTarget()
 void LevelManager::update(float dt)
 {
 	mHero.update(dt);
+	for (int i=0; i<mBoxes.size(); i++)
+	{
+		mBoxes[i] -> update(dt);
+	}
 }

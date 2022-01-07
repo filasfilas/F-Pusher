@@ -5,7 +5,7 @@ MusicPlayer::MusicPlayer()
 : mMusic()
 , mVolume(100.f)
 {
-	mFilenames[Music::MenuTheme]    = "media/music/MenuTheme.ogg";
+	mFilenames[Music::MainTheme]    = "media/music/Komiku_-_02_-_Poupis_Theme.ogg";
 }
 
 void MusicPlayer::play(Music::ID music)
@@ -35,6 +35,19 @@ void MusicPlayer::setPaused(bool paused)
 		mMusic.play();
 	}
 }
+
+void MusicPlayer::switchPaused()
+{
+	if(mMusic.getStatus() == sf::Music::Paused)
+	{
+		mMusic.play();
+	}
+	else
+	{
+		mMusic.pause();
+	}
+}
+
 
 void MusicPlayer::setVolume(float volume)
 {

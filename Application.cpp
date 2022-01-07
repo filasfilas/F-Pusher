@@ -2,6 +2,7 @@
 #include "headers/TitleState.h"
 #include "headers/Definitions.h"
 
+//#include <iostream>
 
 Application::Application()
 {
@@ -26,6 +27,8 @@ void Application::run()
     while (gData -> mWindow.isOpen())
     {         
 		timeSinceLastUpdate += (clock.restart()).asSeconds(); 
+//		int fps = 1/timeSinceLastUpdate;
+//		std::cout<<fps<<std::endl;
 		while (timeSinceLastUpdate > TimePerFrame) 
 		{ 
 			timeSinceLastUpdate -= TimePerFrame; 
@@ -82,6 +85,7 @@ void Application::loadResources()
     gData -> mAssets.loadTexture(Textures::PlayButton, "media/images/Button.png");
 	gData -> mAssets.loadTexture(Textures::ExitButton, "media/images/Button.png");
 	gData -> mAssets.loadTexture(Textures::SmallMenu, "media/images/small_menu.png");
+	gData -> mAssets.loadTexture(Textures::SoundButton, "media/images/sound.png");
 
 	gData -> mAssets.loadFont(Fonts::HUD, "media/fonts/PressStart2P-vaV7.ttf");
     gData -> mAssets.loadFont(Fonts::Main, "media/fonts/PressStart2P-vaV7.ttf");

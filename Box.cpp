@@ -7,6 +7,7 @@ Box::Box (TileType type, sf::Sprite spriteSheet, sf::Vector2i intPos)
 :Tile(type, spriteSheet, intPos)
 {
 	mTarget=false;
+	isMoving=false;
 
 	arrSprite[0] =mSprite;
 	arrSprite[1] =mSprite;
@@ -27,19 +28,46 @@ sf::Vector2i Box::getIntPosition()
 	return mIntPosition;
 }
 
-void Box::move (sf::Vector2i newPosition, TileType newTileType)
+void Box::move (sf::Vector2i newPosition, TileType newTile)
 {
-	if (newTileType == TARGET)
-	{	
-		mTarget = true;
-		mSprite=arrSprite[1];
+	if (isMoving == true) {return;} //prevent new mov command while previous moving is not finished
+	isMoving = true;
+	mTimer = 0.0;
+	newIntPos = newPosition;
+	newTileType = newTile;
+
+	speed = sf::Vector2f((newIntPos.x-getIntPosition().x)*HERO_SPEED*1.0, (newIntPos.y-getIntPosition().y)*HERO_SPEED*1.0);
+
+	mIntPosition = newPosition;
+}
+
+void Box::update(float dt)
+{
+	if(isMoving == false) 
+	{
+		setIntPosition(newIntPos);
+		return;
 	}
-	else
-	{	
-		mTarget = false;
-		mSprite=arrSprite[0];
+
+	mTimer += dt;
+	if(mTimer > ANIMATION_TIME)
+	{
+		isMoving=false;
+		mTimer=0.0;
+
+		if (newTileType == TARGET)
+		{	
+			mTarget = true;
+			mSprite=arrSprite[1];
+		}
+		else
+		{	
+			mTarget = false;
+			mSprite=arrSprite[0];
+		}
+		setIntPosition(newIntPos);
 	}
-	setIntPosition(newPosition);
+	mSprite.setPosition(mSprite.getPosition()+speed*dt);
 }
 
 void Box::savePosition()

@@ -23,7 +23,7 @@ void GameState::init()
 	mLevel.loadLevel(currLevel);
 	mHUD.update(currLevel);
 
-	//gData -> mMusic.play(Music::MenuTheme); 
+	gData -> mMusic.play(Music::MainTheme); 
 }
 
 void GameState::handleInput(const sf::Event& event)
@@ -52,9 +52,8 @@ void GameState::handleInput(const sf::Event& event)
 			{moveDirection=LEFT;}
 		if (event.key.code == sf::Keyboard::Right)
 			{moveDirection=RIGHT;}
-
-
 	}
+	mHUD.handleInput(event);
 
 }
 
@@ -101,5 +100,5 @@ void GameState::pause()
 
 void GameState::resume()
 {
-	//gData -> mMusic.setPaused(false);
+	gData -> mMusic.setPaused(false);
 }

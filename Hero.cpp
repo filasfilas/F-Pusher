@@ -29,12 +29,17 @@ Hero::Hero(GlobalDataRef   gData)
 
 	mSprite = mAnimation[mDirection][0];
 	setIntPosition(sf::Vector2i(0,0));
+	isMoving = false;
 }
 
 void Hero::init(sf::Vector2i pos)
 {
 	setIntPosition (pos);
 	posSaves.clear();
+	mDirection = DOWN;
+	isMoving = false;
+	animTime = 0.0;
+	mTimer = 0.0;
 }
 
 void Hero::draw(sf::RenderWindow& window) 
@@ -45,8 +50,15 @@ void Hero::draw(sf::RenderWindow& window)
 
 void Hero::move(sf::Vector2i newPos, Direction direction)
 {
-	setIntPosition(newPos);
+	if (isMoving == true) {return;} //prevent new mov command while previous moving is not finished
+	isMoving = true;
+	animTime = 0.0;
+	mTimer = 0.0;
+	newIntPos = newPos;
+	//setIntPosition(newPos);
 	mDirection = direction;
+	speed = sf::Vector2f((newIntPos.x-getIntPosition().x)*HERO_SPEED*1.0, (newIntPos.y-getIntPosition().y)*HERO_SPEED*1.0);
+	mIntPosition = newPos;
 }
 
 void Hero::setIntPosition(sf::Vector2i pos)
@@ -72,7 +84,35 @@ void Hero::undoPosition()
 void Hero::update(float dt)
 {
 	if((mDirection<1) or (mDirection>4)) {mDirection=DOWN;}
-	sf::Vector2f pos = mSprite.getPosition();
-	mAnimation[mDirection][mFrame].setPosition(pos);
+
+	if(isMoving == false)
+	{
+		mFrame =0;
+		mAnimation[mDirection][mFrame].setPosition(mSprite.getPosition());
+	}
+	else
+	{
+		animate(dt);
+		mTimer += dt;
+		if (mTimer > ANIMATION_TIME)	
+		{	
+			isMoving = false;
+			mTimer = 0.0;
+			setIntPosition(newIntPos);
+		}
+		mAnimation[mDirection][mFrame].setPosition(mSprite.getPosition()+speed*dt);
+	}
 	mSprite = mAnimation[mDirection][mFrame];
 }
+
+void Hero::animate(float dt)
+{
+	animTime += dt;
+	if(animTime>ANIMATION_TIME_STEP)
+	{
+		animTime = 0.0;
+		mFrame++;
+		if (mFrame>2){mFrame=0;}
+	}
+}
+
