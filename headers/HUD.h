@@ -2,6 +2,7 @@
 
 #include "Application.h"
 #include "SFML/Graphics.hpp"
+#include "Button.h"
 //#include "Definitions.h"
 
 
@@ -12,11 +13,13 @@ class HUD
 
 		void draw();
 		void update(int currLevel);
+        void handleInput(const sf::Event& event);
 
 	private:
         GlobalDataRef   gData;
 		sf::Text		bottomText;
-		sf::Text		upperText;			
+		sf::Text		upperText;	
+		Button			soundBtn;		
 
 		int				mLevel;
 

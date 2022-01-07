@@ -11,7 +11,9 @@ const int TILE_SIZE = 48;
 
 const int MAX_LEVEL = 105;
 
-const float ANIMATION_TIME=0.2;
+const float ANIMATION_TIME 		= 0.2;
+const float ANIMATION_TIME_STEP =ANIMATION_TIME/3.0;
+const float HERO_SPEED = TILE_SIZE/ANIMATION_TIME; //pixels per second
 
 
 enum Direction

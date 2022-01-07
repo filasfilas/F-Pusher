@@ -9,6 +9,7 @@ namespace Textures
 		ExitButton,
 		PauseButton,
 		MenuButton,
+		SoundButton,
 		Tiles,
 		SmallMenu,
 	};
@@ -35,6 +36,6 @@ namespace Music
 {
 	enum ID
 	{
-		MenuTheme,
+		MainTheme,
 	};
 }

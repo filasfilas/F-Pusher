@@ -11,14 +11,21 @@ class Box : public Tile
 
 		bool isOnTarget();
 		sf::Vector2i getIntPosition();
-		void move (sf::Vector2i newPosition, TileType newTileType);
+		void move (sf::Vector2i newPosition, TileType newTile);
+		void update (float dt);
 
 		void savePosition();
 		void undoPosition();
 
 	private:
 		bool		mTarget;
-		sf::Sprite	arrSprite[2];
+		bool		isMoving;
+		float		mTimer;
+		TileType	newTileType;
+
+		sf::Vector2i	newIntPos;
+		sf::Vector2f	speed;
+		sf::Sprite		arrSprite[2];
 
 		std::vector <sf::Vector2i>	posSaves;
 

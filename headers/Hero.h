@@ -29,11 +29,17 @@ class Hero
 		sf::Sprite		mSprite;
 		sf::Sprite		mAnimation[5][3];
 		int				mFrame;
+		bool 			isMoving;
+		float			animTime;
+		float			mTimer;
 		Direction		mDirection;
+		sf::Vector2i	newIntPos;
 		sf::Vector2i	mIntPosition;
+		sf::Vector2f	speed;
 
 		std::vector <sf::Vector2i>	posSaves;
 
 		void setIntPosition(sf::Vector2i pos);
+		void animate(float dt);
 
 };

@@ -17,6 +17,7 @@ public:
 	void play(Music::ID  music);
 	void stop();
 	void setPaused(bool paused);
+	void switchPaused();
 	void setVolume(float volume);
 
 private:
