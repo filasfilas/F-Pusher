@@ -1,4 +1,5 @@
 #include "headers/MusicPlayer.h"
+#include <stdexcept>
 
 
 MusicPlayer::MusicPlayer()
